@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col s12">
+        <div class="container">
+            <div id="login-page" class="row">
+                <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+                    <div class="row">
+                        <div class="input-field col s12" style="text-align: center; padding-top: 5px;">
+                            Hệ thống cần được thực hiện trên máy tính để có được sự trải nghiệm tốt nhất
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12" style="text-align: center; padding-top: 5px;">
+                            <img width="100" height="100" src="/assets/image/logo.png"
+                                title="Cổng xác thực để truy cập hệ sinh thái số"
+                                alt="Cổng xác thực để truy cập hệ sinh thái số">
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix pt-2">face</i>
+                            <input type="text" placeholder="{{DownloadService.TitleTaiKhoan}}" name="TaiKhoan"
+                                [(ngModel)]="ThanhVienService.FormData.TaiKhoan">
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix pt-2">lock_outline</i>
+                            <input placeholder="{{DownloadService.TitleMatKhau}}" name="MatKhau"
+                                [(ngModel)]="ThanhVienService.FormData.MatKhau" type="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button (click)="Login()"
+                                [disabled]="!ThanhVienService.FormData.TaiKhoan || !ThanhVienService.FormData.MatKhau"
+                                class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">{{DownloadService.TitleDangNhap}}</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small"><a routerLink="/Register" style="font-size: 20px;"
+                                    title="{{DownloadService.TitleDangKy}}">{{DownloadService.TitleDangKy}}</a>
+                            </p>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin right-align medium-small"><a routerLink="/ForgotPassword"
+                                    style="font-size: 20px;"
+                                    title="{{DownloadService.TitleQuenMatKhau}}">{{DownloadService.TitleQuenMatKhau}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="ThanhVienService.IsShowLoading"></app-loading>

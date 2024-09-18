@@ -1,0 +1,77 @@
+<nav id="sidebar" class="sidebar-wrapper">
+      <div class="app-brand p-3 mb-3">
+            <div class="row">
+                  <div class="col-9">
+                        <a href="#" *ngIf="ThanhVienService.FormDataLogin && ThanhVienService.FormDataLogin.Name">
+                              <img src="assets/image/logo.png" class="logo" alt="{{PageTitle}}"
+                                    title="{{PageTitle}}" /><span
+                                    id="account-name">&nbsp;&nbsp;&nbsp;{{PageTitleShort}}</span></a>
+                  </div>
+                  <div class="col-3">
+                        <div class="d-flex float-end">
+                              <button class="toggle-sidebar" id="toggle-sidebar-close-mobile">
+                                    <i class="bi bi-x-square lh-1"></i>
+                              </button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div class="sidebarMenuScroll">
+            <ul class="sidebar-menu">
+                  <li (click)="MenuClick(itemParent)"
+                        [ngClass]="itemParent.Active == true ? 'treeview active current-page': 'treeview'"
+                        *ngFor="let itemParent of DanhMucChucNangService.ListParent;">
+                        <a style="cursor: pointer;">
+                              <i class="{{itemParent.Display}}"></i>
+                              <span class="menu-text">{{itemParent.Name}}</span>
+                        </a>
+                        <ul [ngClass]="itemParent.Active == true ? 'treeview-menu menu-open': 'treeview-menu'">
+                              <li *ngFor="let itemChild of itemParent.ListChild;">
+                                    <a [ngStyle]="{'font-weight': itemChild.Active == true ? 'bold' : ''}"
+                                          [ngClass]="itemChild.Active == true ? 'active-sub': ''"
+                                          routerLink="{{itemChild.Code}}">{{itemChild.Name}}</a>
+                              </li>
+                        </ul>
+                  </li>
+                  <li *ngIf="ThanhVienService.FormDataLogin && ThanhVienService.FormDataLogin.Name">
+                        <a routerLink="{{domainName}}ThanhVienThongTin">
+                              <i class="bi bi-shield-lock"></i>
+                              <span class="menu-text">Đổi mật khẩu</span>
+                        </a>
+                  </li>
+                  <li *ngIf="ThanhVienService.FormDataLogin && ThanhVienService.FormDataLogin.Name">
+                        <a routerLink="/GioiThieu">
+                              <i class="bi bi-bank2"></i>
+                              <span class="menu-text">Giới thiệu</span>
+                        </a>
+                  </li>
+            </ul>
+      </div>
+</nav>
+<div class="app-container">
+      <div class="app-header d-flex align-items-center">
+            <div class="d-flex">
+                  <button class="pin-sidebar">
+                        <i class="bi bi-list lh-1"></i>
+                  </button>
+            </div>
+            <div class="app-brand-sm d-lg-none d-flex">
+            </div>
+            <div class="search-container d-lg-block d-none mx-3">
+                  <input type="text" class="form-control" placeholder="{{PageDescription}}" />
+            </div>
+            <div class="header-actions">
+                  <div class="d-sm-flex d-none gap-3">
+                  </div>
+                  <div class="dropdown ms-4">                        
+                  </div>
+                  <div class="d-flex">
+                        <button class="toggle-sidebar">
+                              <i class="bi bi-list lh-1"></i>
+                        </button>
+                  </div>
+            </div>
+      </div>
+      <hr />
+      <router-outlet></router-outlet>
+</div>

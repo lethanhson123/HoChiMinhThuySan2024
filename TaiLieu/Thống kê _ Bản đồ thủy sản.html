@@ -1,0 +1,603 @@
+    <!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Thống kê</title>
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="1E7RbD2YasaNA_pMsQcdIc5dc_cOBdOfb4Nsy01VMQm5O5oOSMgT9f8ylXicbHFRjDE7hzhHkq0f8jSdBDZFYw==">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/be35c1c6/css/dashmix.min.css" rel="stylesheet">
+<link href="/assets/be35c1c6/css/all.min.css" rel="stylesheet">
+<link href="/assets/be35c1c6/css/custom.css" rel="stylesheet">
+<link href="/assets/39e8fc6/css/activeform.css" rel="stylesheet">
+<script src="/assets/3c53cd88/core.js"></script>
+<script src="/assets/3c53cd88/charts.js"></script>
+<script src="/assets/3c53cd88/themes/animated.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>    </head>
+    <body>
+        <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed side-trans-enabled">
+        
+<nav id="sidebar" aria-label="Main Navigation">
+
+    <div class="bg-primary-darker">
+        <div class="content-header bg-white-10">
+            <a class="font-w600 text-white tracking-wide" href="/">
+                <img src="https://thuysan.hcmgis.vn/resources/images/logo_cctshcm_light.png" alt="logo" width="100%"
+                     class="logo-default">
+            </a>
+            <div>
+                <a class="d-lg-none text-white ml-2" data-toggle="layout" data-action="sidebar_close"
+                   href="javascript:void(0)">
+                    <i class="fa fa-times-circle text-primary-darker"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="js-sidebar-scroll" data-simplebar="init">
+        <div class="simplebar-wrapper" style="margin: 0px;">
+            <div class="simplebar-height-auto-observer-wrapper">
+                <div class="simplebar-height-auto-observer"></div>
+            </div>
+            <div class="simplebar-mask">
+                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                    <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
+                        <div class="simplebar-content" style="padding: 0px;">
+                            <div class="content-side">
+                                <ul class="nav-main">
+
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link active" href="/">
+                                            <i class="nav-main-link-icon fa fa-globe"></i>
+                                            <span class="nav-main-link-name">Trang chủ</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link "
+                                           href="/bando/site/index">
+                                            <i class="nav-main-link-icon fa fa-map-location"></i>
+                                            <span class="nav-main-link-name">Bản đồ</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-main-heading">Quản lý</li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-users"></i>
+                                            <span class="nav-main-link-name">Hộ nuôi</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/ho-nuoi/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/ho-nuoi/statistic">
+                                                    <i class="nav-main-link-icon fa fa-chart-line"></i>
+                                                    <span class="nav-main-link-name">Thống kê</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/ho-nuoi/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-draw-polygon"></i>
+                                            <span class="nav-main-link-name">Vùng nuôi</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/vung-nuoi/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/vung-nuoi/statistic">
+                                                    <i class="nav-main-link-icon fa fa-chart-line"></i>
+                                                    <span class="nav-main-link-name">Thống kê</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/vung-nuoi/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-ship"></i>
+                                            <span class="nav-main-link-name">Phương tiện khai thác</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/phuong-tien-khai-thac/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/phuong-tien-khai-thac/statistic">
+                                                    <i class="nav-main-link-icon fa fa-chart-line"></i>
+                                                    <span class="nav-main-link-name">Thống kê</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/phuong-tien-khai-thac/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-shrimp"></i>
+                                            <span class="nav-main-link-name">Giống thủy sản</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/giong-thuy-san/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/giong-thuy-san/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-store"></i>
+                                            <span class="nav-main-link-name">Cửa hàng</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/cua-hang/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/cua-hang/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
+                                           aria-haspopup="true" aria-expanded="true" href="#">
+                                            <i class="nav-main-link-icon fa fa-thermometer-empty"></i>
+                                            <span class="nav-main-link-name">Điểm quan trắc</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/diem-quan-trac/index">
+                                                    <i class="nav-main-link-icon fa fa-list"></i>
+                                                    <span class="nav-main-link-name">Danh sách</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link"
+                                                   href="/quan-ly/diem-quan-trac/import">
+                                                    <i class="nav-main-link-icon fa fa-file-import"></i>
+                                                    <span class="nav-main-link-name">Import</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                        <li class="nav-main-heading">Tài khoản</li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link  " href="/user/auth-user">
+                                                <i class="nav-main-link-icon fa fa-user-circle"></i>
+                                                <span class="nav-main-link-name">Quản lý tài khoản</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link  " href="/user/auth-group">
+                                                <i class="nav-main-link-icon fa fa-users"></i>
+                                                <span class="nav-main-link-name">Quản lý nhóm quyền</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link  " href="/user/auth-role">
+                                                <i class="nav-main-link-icon fa fa-key"></i>
+                                                <span class="nav-main-link-name">Quản lý quyền truy cập</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link  " href="/user/auth-action">
+                                                <i class="nav-main-link-icon fa fa-cog"></i>
+                                                <span class="nav-main-link-name">Quản lý hoạt động</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link  " href="/activity">
+                                                <i class="nav-main-link-icon fa fa-info"></i>
+                                                <span class="nav-main-link-name">Hoạt động người dùng</span>
+                                            </a>
+                                        </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="simplebar-placeholder" style="width: auto; height: 760px;"></div>
+        </div>
+        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+        </div>
+        <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+            <div class="simplebar-scrollbar"
+                 style="height: 190px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+        </div>
+    </div>
+</nav>        <header id="page-header" class="bg-primary-darker">
+    <div class="content-header">
+        <div>
+            <button type="button" class="btn btn-light" data-toggle="layout" data-action="sidebar_toggle">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+        </div>
+        <div>
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn btn-light" id="page-header-user-dropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-user d-sm-none"></i>
+                    <span class="d-none d-sm-inline-block">Xin chào demo</span>
+                    <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="page-header-user-dropdown">
+
+                    <div class="p-2">
+                        <a class="dropdown-item"
+                           href="/user/auth-user/profile">
+                            <i class="far fa-fw fa-user mr-1"></i> Thông tin cá nhân
+                        </a>
+                        <a class="dropdown-item"
+                           href="/user/auth-user/change-pass">
+                            <i class="fa fa-key mr-1"></i> Đổi mật khẩu
+                        </a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                           href="/user/auth/logout">
+                            <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-header-search" class="overlay-header bg-primary-darker">
+        <div class="bg-white-10">
+            <div class="content-header">
+                                <form id="w0" class="w-100 form-vertical kv-form-bs4" action="/quan-ly-dan-cu/search/index" method="post">
+<input type="hidden" name="_csrf" value="1E7RbD2YasaNA_pMsQcdIc5dc_cOBdOfb4Nsy01VMQm5O5oOSMgT9f8ylXicbHFRjDE7hzhHkq0f8jSdBDZFYw==">                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-alt-primary" data-toggle="layout"
+                                data-action="header_search_off">
+                            <i class="fa fa-fw fa-times-circle"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control border-0" placeholder="Tìm kiếm..."
+                           id="page-header-search-input" name="q">
+                </div>
+                </form>            </div>
+        </div>
+    </div>
+    <div id="page-header-loader" class="overlay-header bg-header-dark">
+        <div class="bg-white-10">
+            <div class="content-header">
+                <div class="w-100 text-center">
+                    <i class="fa fa-fw fa-sun fa-spin text-white"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <main id="main-container">
+            <div class="content">
+                                <div class="block">
+                    <div class="col-lg-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb custom-breadcrumb"><li class='breadcrumb-item'><a href="/">Tổng quan</a></li><li class='active breadcrumb-item'>Thống kê</li></ol>                        </nav>
+                    </div>
+                </div>
+                                
+<style>
+
+    #chartdiv {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        width: 100%;
+        height: 400px;
+    }
+
+    #chart_cuahang {
+        width: 100%;
+        height: 450px;
+    }
+
+    #chart_loaigiong {
+        width: 100%;
+        height: 450px;
+    }
+
+    #chart_phuongtien {
+        width: 100%;
+        height: 450px;
+    }
+</style>
+
+
+<!-- Chart code -->
+<script>
+
+    am4core.ready(function () {
+
+// Themes begin
+
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Add data
+        chart.data = [{"soluong":2717,"ma_vn":"Tôm nước lợ mặn"},{"soluong":87,"ma_vn":"Thuỷ sản nước lợ khác"},{"soluong":16,"ma_vn":"Thuỷ sản VIETGAP"}]
+// Add and configure Series
+        var pieSeries = chart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "soluong";
+        pieSeries.dataFields.category = "ma_vn";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeOpacity = 1;
+        chart.legend = new am4charts.Legend();
+// This creates initial animation
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+
+        chart.hiddenState.properties.radius = am4core.percent(0);
+        pieSeries.tooltip.label.adapter.add("text", function (text, target) {
+            if (target.dataItem && target.dataItem.valueY == null) {
+                return "";
+            } else {
+                return text;
+            }
+        });
+/// Thống kê cửa hàng
+        var chart_cuahang = am4core.create("chart_cuahang", am4charts.PieChart);
+
+// Add data
+        chart_cuahang.data = [{"soluong":153,"loai_ch":"Cửa hàng kinh doanh vật tư thủy sản"},{"soluong":212,"loai_ch":"Cơ sở sản xuất, nuôi, kinh doanh cá cảnh"},{"soluong":34,"loai_ch":"Cửa hàng kinh doanh thủy sản"}]
+// Add and configure Series
+        var pieSeries = chart_cuahang.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "soluong";
+        pieSeries.dataFields.category = "loai_ch";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeOpacity = 1;
+        chart_cuahang.legend = new am4charts.Legend();
+// This creates initial animation
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+
+        chart_cuahang.hiddenState.properties.radius = am4core.percent(0);
+
+/// Thống kê giống
+        var chart_loaigiong = am4core.create("chart_loaigiong", am4charts.PieChart);
+
+// Add data
+        chart_loaigiong.data = [{"soluong":34,"loai_giong":"Giống thủy sản ngọt"},{"soluong":1,"loai_giong":""},{"soluong":33,"loai_giong":"Giống thủy sản lợ mặn"},{"soluong":1,"loai_giong":"1234"},{"soluong":2,"loai_giong":"Khác"}]
+// Add and configure Series
+        var pieSeries = chart_loaigiong.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "soluong";
+        pieSeries.dataFields.category = "loai_giong";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeOpacity = 1;
+        chart_loaigiong.legend = new am4charts.Legend();
+// This creates initial animation
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+
+        chart_loaigiong.hiddenState.properties.radius = am4core.percent(0);
+        /// Thống kê phuongtien
+        var chart_phuongtien = am4core.create("chart_phuongtien", am4charts.PieChart);
+
+// Add data
+        chart_phuongtien.data = [{"soluong":1,"tenquan":"Quận 3"},{"soluong":13,"tenquan":"Huyện Nhà Bè"},{"soluong":1,"tenquan":"Quận 8"},{"soluong":404,"tenquan":"Huyện Cần Giờ"},{"soluong":2,"tenquan":"Huyện Hóc Môn"}]
+// Add and configure Series
+        var pieSeries = chart_phuongtien.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "soluong";
+        pieSeries.dataFields.category = "tenquan";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeOpacity = 1;
+        chart_phuongtien.legend = new am4charts.Legend();
+// This creates initial animation
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+
+        chart_phuongtien.hiddenState.properties.radius = am4core.percent(0);
+    }); // end am4core.ready()
+</script>
+
+<div class="row items-push">
+    <div class="col-sm-6 col-xl-3">
+        <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1">
+                <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="fa fa-users fa-lg text-primary"></i>
+                </div>
+                <div class="fs-1 fw-bold">  2820</div>
+                <div class="text-muted mb-3">Hộ nuôi</div>
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                <a class="fw-medium" href="/quan-ly/ho-nuoi">
+                    Xem tất cả
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1">
+                <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="fa fa-2x fa-ship text-primary"></i>
+                </div>
+                <div class="fs-1 fw-bold">  421</div>
+                <div class="text-muted mb-3">Phương tiện đánh bắt</div>
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                <a class="fw-medium" href="/quan-ly/phuong-tien-khai-thac">
+                    Xem tất cả
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1">
+                <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="far fa-2x fa-building text-primary"></i>
+                </div>
+                <div class="fs-1 fw-bold">399</div>
+                <div class="text-muted mb-3">Cửa hàng thuỷ sản</div>
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                <a class="fw-medium" href="/quan-ly/cua-hang">
+                    Xem tất cả
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full">
+                <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="fa fa-2x fa-venus-mars text-primary"></i>
+                </div>
+                <div class="fs-1 fw-bold"> 71</div>
+                <div class="text-muted mb-3">Giống thuỷ sản</div>
+
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                <a class="fw-medium" href="/quan-ly/giong-thuy-san">
+                    Xem tất cả
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-themed">
+    <div class="block-header">
+        <h3 class="block-title">Hộ nuôi</h3>
+    </div>
+    <div class="block-content block-content-full  overflow-hidden">
+        <div id="chartdiv"></div>
+    </div>
+
+</div>
+<div class="block block-themed">
+    <div class="block-header">
+        <h3 class="block-title">Cửa hàng</h3>
+    </div>
+    <div class="block-content block-content-full overflow-hidden">
+        <div id="chart_cuahang"></div>
+    </div>
+
+</div>
+<div class="block block-themed">
+    <div class="block-header">
+        <h3 class="block-title">Giống thủy sản</h3>
+    </div>
+    <div class="block-content block-content-full overflow-hidden">
+        <div id="chart_loaigiong"></div>
+    </div>
+
+</div>
+<div class="block block-themed">
+
+    <div class="block-header">
+        <h3 class="block-title">Phương tiện khai thác</h3>
+    </div>
+    <div class="block-content block-content-full overflow-hidden">
+        <div id="chart_phuongtien"></div>
+    </div>
+
+</div>
+
+            </div>
+        </main>
+
+        
+<footer id="page-footer" class="bg-body-light">
+    <div class="content py-0">
+        <div class="row font-size-sm">
+            <div class="col-sm-6 order-sm-1 mb-1 mb-sm-0 text-center text-sm-left">
+               2024 © <a href="http://hcmgis.vn/" target="_blank" class="text-uppercase font-w600">HCMGIS</a>
+            </div>
+            <div class="col-sm-6 order-sm-2 text-center text-sm-right">
+                <a class="font-w600" href="https://1.envato.market/r6y" target="_blank">Dashmix</a> © <span data-toggle="year-copy" class="js-year-copy-enabled">2021</span>
+            </div>
+        </div>
+    </div>
+</footer>    </div>
+
+
+
+    <script src="/assets/be35c1c6/js/dashmix.app.min.js"></script>
+<script src="/assets/7acacfc1/yii.js"></script>
+<script src="/assets/7acacfc1/yii.activeForm.js"></script>
+<script src="/assets/39e8fc6/js/activeform.js"></script>
+<script>jQuery(function ($) {
+var $el=jQuery("#w0 .kv-hint-special");if($el.length){$el.each(function(){$(this).activeFieldHint()});}kvBs4InitForm();
+jQuery('#w0').yiiActiveForm([], []);
+});</script>    </body>
+    </html>

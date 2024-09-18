@@ -1,0 +1,67 @@
+<div class="app-body">
+    <div class="row">
+        <div class="col-lg-3 col-sm-12 col-12">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Đường phố" (click)="MapLoad(0)" class="btn btn-success">Đường phố</a>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Vệ tinh" (click)="MapLoad(1)" class="btn btn-success">Vệ tinh</a>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <a style="width: 100%; font-size: 18px;" (click)="Save()" class="btn btn-info"><i
+                        class="bi bi-sd-card"></i> Lưu (01 vùng nuôi)
+                </a>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label>Mã số: </label>
+                <br />
+                <label class="form-label" style="font-size: 24px;">{{ToChucService.FormData.Code}}</label>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label>Chủ thể: </label>
+                <br />
+                <label class="form-label" style="font-size: 24px;">{{ToChucService.FormData.Name}}</label>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label>Điện thoại: </label>
+                <br />
+                <label class="form-label" style="font-size: 24px;">{{ToChucService.FormData.DienThoai}}</label>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <div class="form-check form-check-inline mb-6">
+                    <input type="checkbox" class="form-check-input" name="Active"
+                        [(ngModel)]="ToChucToaDoService.FormData.Active" />
+                    <label class="form-check-label" for="Active">Trụ sở (Lấy điểm đầu tiên)</label>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label class="form-label">Vùng nuôi</label>
+                <input name="Name" [(ngModel)]="ToChucVungNuoiService.FormData.Name" placeholder="Vùng nuôi" type="text"
+                    class="form-control">
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label class="form-label">Mã số (nếu có)</label>
+                <input name="Code" [(ngModel)]="ToChucVungNuoiService.FormData.Code" placeholder="Mã số (nếu có)" type="text"
+                    class="form-control">
+            </div>
+            <div class="col-lg-12 col-sm-12 col-12">
+                <label class="form-label">Địa chỉ</label>
+                <input name="Description" [(ngModel)]="ToChucVungNuoiService.FormData.Description" placeholder="Địa chỉ" type="text"
+                    class="form-control">
+            </div>
+        </div>
+        <div class="col-lg-9 col-sm-12 col-12">
+            <div class="map" #map style="height: 600px; width: 100%; position: relative;">
+                <div style="z-index: 1000; position: absolute; top: 0;">
+                    <img src="assets/image/vungtrong.png" />
+                </div>
+                <div
+                    style="z-index: 1000; position: absolute; bottom: 0; height: 20px; width: 100%; background-color: #ffffff;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="ToChucService.IsShowLoading"></app-loading>

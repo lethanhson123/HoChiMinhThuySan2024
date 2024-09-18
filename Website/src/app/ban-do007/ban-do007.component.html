@@ -1,0 +1,125 @@
+<div class="app-body">
+    <div class="row">
+        <div class="col-xxl-12">
+            <div class="card" style="margin-left: 1px;">
+                <div class="card-body">
+                    <div class="custom-tabs-container">
+                        <ul class="nav nav-tabs justify-content-end" id="customTab5" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tab-Map" data-bs-toggle="tab" href="#Map" role="tab"
+                                    aria-controls="Map" aria-selected="true">
+                                    <span class="badge bg-info" style="font-size: 16px;">Bản đồ Tổng hợp</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="customTabContent">
+                            <div class="tab-pane fade show active" id="Map" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-12 col-12">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12 col-12">                                                
+                                                <a style="width: 100%;" title="Đường phố" (click)="MapLoad(0)"
+                                                    class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Đường
+                                                    phố</a>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">                                                
+                                                <a style="width: 100%;" title="Vệ tinh" (click)="MapLoad(1)"
+                                                    class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Vệ
+                                                    tinh</a>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label *ngIf="!NotificationService.IsMobile" class="form-label">Quận
+                                                    huyện
+                                                    [{{ToChucService.BaseParameter.DanhMucQuanHuyenID}}]</label>
+                                                <select class="form-select" name="DanhMucQuanHuyenID"
+                                                    [(ngModel)]="ToChucService.BaseParameter.DanhMucQuanHuyenID"
+                                                    (change)="DanhMucXaPhuongSearch()">
+                                                    <option value="0">
+                                                        Tất cả</option>
+                                                    <option *ngFor="let item of DanhMucQuanHuyenService.List;"
+                                                        [value]="item.ID">
+                                                        {{item.Name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label *ngIf="!NotificationService.IsMobile" class="form-label">Xã
+                                                    phường
+                                                    [{{ToChucService.BaseParameter.DanhMucXaPhuongID}}]</label>
+                                                <select class="form-select" name="DanhMucXaPhuongID"
+                                                    [(ngModel)]="ToChucService.BaseParameter.DanhMucXaPhuongID">
+                                                    <option value="0">
+                                                        Tất cả</option>
+                                                    <option *ngFor="let item of DanhMucXaPhuongService.List;"
+                                                        [value]="item.ID">
+                                                        {{item.Name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">                                                
+                                                <input [(ngModel)]="ToChucService.BaseParameter.SearchString"
+                                                    placeholder="Tìm ..." class="form-control"
+                                                    (keyup.enter)="MapLoad(1)">
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsHoNuoi"
+                                                        [(ngModel)]="IsHoNuoi" />
+                                                    <label class="form-check-label" for="IsHoNuoi">Hộ nuôi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsVungNuoi"
+                                                        [(ngModel)]="IsVungNuoi" />
+                                                    <label class="form-check-label" for="IsVungNuoi">Vùng nuôi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsPhuongTienKhaiThac"
+                                                        [(ngModel)]="IsPhuongTienKhaiThac" />
+                                                    <label class="form-check-label" for="IsPhuongTienKhaiThac">Phương tiện khai thác</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsGiong"
+                                                        [(ngModel)]="IsGiong" />
+                                                    <label class="form-check-label" for="IsGiong">Cơ sở sản xuất Giống</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsCuaHang"
+                                                        [(ngModel)]="IsCuaHang" />
+                                                    <label class="form-check-label" for="IsCuaHang">Cửa hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="form-check form-check-inline mb-6">
+                                                    <input type="checkbox" class="form-check-input" name="IsTramQuanTrac"
+                                                        [(ngModel)]="IsTramQuanTrac" />
+                                                    <label class="form-check-label" for="IsTramQuanTrac">Trạm quan trắc</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12 col-12">
+                                        <div class="map" #map style="height: 700px; width: 100%;">
+                                            <div style="z-index: 1000; position: absolute; top: 0;">
+                                                <img src="assets/image/vungtrong.png" />
+                                            </div>
+                                            <div
+                                                style="z-index: 1000; position: absolute; bottom: 0; width: 100%; height: 20px; background-color: #ffffff;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="ToChucService.IsShowLoading"></app-loading>

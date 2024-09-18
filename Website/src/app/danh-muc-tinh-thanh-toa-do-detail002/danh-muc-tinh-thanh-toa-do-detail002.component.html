@@ -1,0 +1,179 @@
+<div class="custom-tabs-container">
+    <ul class="nav nav-tabs justify-content-end" id="customTab5" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="tab-DanhMucTinhThanhToaDoDetail" data-bs-toggle="tab"
+                href="#DanhMucTinhThanhToaDoDetail" role="tab" aria-controls="DanhMucTinhThanhToaDoDetail"
+                aria-selected="true">
+                <span class="badge bg-info" style="font-size: 16px;">Tọa độ xã phường: 
+                    {{this.DanhMucXaPhuongService.FormData.Name}} [{{this.DanhMucXaPhuongService.FormData.ID}}]</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a style="cursor: pointer;" class="nav-link" id="tab-Close" data-bs-toggle="tab" (click)="Close()"
+                role="tab" aria-controls="Close" aria-selected="false">
+                <span class="badge bg-danger" style="font-size: 16px;"><i class="bi bi-x-lg"></i></span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="customTabContent">
+        <div class="tab-pane fade show active" id="DanhMucTinhThanhToaDo" role="tabpanel">
+            <div class="row gx-4">
+                <div class="col-lg-11 col-sm-12 col-12">
+                    <input [(ngModel)]="DanhMucTinhThanhToaDoService.BaseParameter.SearchString" placeholder="Tìm ..."
+                        class="form-control" (keyup.enter)="DanhMucTinhThanhToaDoSearch()">
+                </div>
+                <div class="col-lg-1 col-sm-12 col-12">
+                    <a style="width: 100%;" class="btn btn-success" title="Tìm"
+                        (click)="DanhMucTinhThanhToaDoSearch()"><i class="bi bi-search"></i></a>&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="card mb-4 card-info">
+                <div class="card-header">
+                    <h5 class="card-title text-white">Danh sách
+                        <span *ngIf="DanhMucTinhThanhToaDoService.List">({{DanhMucTinhThanhToaDoService.List.length}}
+                            items)</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-outer">
+                        <div class="table-responsive">
+                            <table *ngIf="!NotificationService.IsMobile" mat-table matSort
+                                #DanhMucTinhThanhToaDoSort="matSort"
+                                [dataSource]="DanhMucTinhThanhToaDoService.DataSource" class="table table-striped m-0">
+                                <ng-container matColumnDef="STT">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        STT
+                                    </th>
+                                    <td mat-cell *matCellDef="let element; index as i;" style="text-align: center;">
+                                        <div *ngIf="DanhMucTinhThanhToaDoPaginator">
+                                            {{DanhMucTinhThanhToaDoPaginator.pageSize *
+                                            DanhMucTinhThanhToaDoPaginator.pageIndex + i + 1}}
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.ID}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="KinhDo">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Kinh độ (Longitude)</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Kinh độ (Longitude)"
+                                            name="KinhDo{{element.ID}}" [(ngModel)]="element.KinhDo">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ViDo">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Vĩ độ (Latitude)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Vĩ độ (Latitude)"
+                                            name="ViDo{{element.ID}}" [(ngModel)]="element.ViDo">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Note">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ghi chú
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Ghi chú"
+                                            name="Note{{element.ID}}" [(ngModel)]="element.Note">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="SortOrder">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sắp xếp
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" placeholder="0"
+                                            name="SortOrder{{element.ID}}" [(ngModel)]="element.SortOrder"
+                                            style="text-align: right;">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Save">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <a class="btn btn-info" (click)="DanhMucTinhThanhToaDoSave(element)"><i
+                                                class="bi bi-sd-card"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" (click)="DanhMucTinhThanhToaDoDelete(element)"
+                                            *ngIf="element.ID>0"><i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="DanhMucTinhThanhToaDoService.DisplayColumns001">
+                                </tr>
+                                <tr mat-row *matRowDef="let row; columns: DanhMucTinhThanhToaDoService.DisplayColumns001;">
+                                </tr>
+                            </table>
+                            <mat-paginator *ngIf="!NotificationService.IsMobile"
+                                #DanhMucTinhThanhToaDoPaginator="matPaginator" [pageSizeOptions]="[10,20,50,100]"
+                                [pageSize]="6" [showFirstLastButtons]></mat-paginator>
+                            <table *ngIf="NotificationService.IsMobile" mat-table matSort
+                                #DanhMucTinhThanhToaDoSort="matSort"
+                                [dataSource]="DanhMucTinhThanhToaDoService.DataSource" class="table table-striped m-0">
+                                <ng-container matColumnDef="STT">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        Danh sách
+                                    </th>
+                                    <td mat-cell *matCellDef="let element; index as i;">
+                                        <div class="row gx-4">
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label class="form-label">Kinh độ (Longitude)</label>
+                                                <input class="form-control" type="text"
+                                                    placeholder="Kinh độ (Longitude)" name="KinhDo{{element.ID}}"
+                                                    [(ngModel)]="element.KinhDo">
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label class="form-label">Vĩ độ (Latitude)</label>
+                                                <input class="form-control" type="text" placeholder="Vĩ độ (Latitude)"
+                                                    name="ViDo{{element.ID}}" [(ngModel)]="element.ViDo">
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label class="form-label">Ghi chú</label>
+                                                <input class="form-control" type="text" placeholder="Ghi chú"
+                                                    name="Note{{element.ID}}" [(ngModel)]="element.Note">
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <label class="form-label">Sắp xếp</label>
+                                                <input class="form-control" type="number" placeholder="0"
+                                                    name="SortOrder{{element.ID}}" [(ngModel)]="element.SortOrder"
+                                                    style="text-align: right;">
+                                            </div>
+                                            <div class="row gx-4">
+                                                <div class="col-lg-6 col-sm-6 col-6">
+                                                    <a class="btn btn-info" style="width: 100%;"
+                                                        (click)="DanhMucTinhThanhToaDoSave(element)"><i
+                                                            class="bi bi-sd-card"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6 col-6">
+                                                    <a class="btn btn-danger" style="width: 100%;"
+                                                        (click)="DanhMucTinhThanhToaDoDelete(element)"
+                                                        *ngIf="element.ID>0"><i class="bi bi-trash"></i>
+                                                    </a>
+                                                </div>
+                                                <br />
+                                                <br />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="DanhMucTinhThanhToaDoService.DisplayColumnsMobile">
+                                </tr>
+                                <tr mat-row
+                                    *matRowDef="let row; columns: DanhMucTinhThanhToaDoService.DisplayColumnsMobile;">
+                                </tr>
+                            </table>
+                            <mat-paginator *ngIf="NotificationService.IsMobile"
+                                #DanhMucTinhThanhToaDoPaginator="matPaginator" [pageSizeOptions]="[10,20,50,100]"
+                                [pageSize]="10000" [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="DanhMucTinhThanhToaDoService.IsShowLoading"></app-loading>

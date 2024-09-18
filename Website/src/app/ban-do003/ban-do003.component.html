@@ -1,0 +1,78 @@
+<div class="app-body">
+    <div class="row">
+        <div class="col-xxl-12">
+            <div class="card" style="margin-left: 1px;">
+                <div class="card-body">
+                    <div class="custom-tabs-container">
+                        <ul class="nav nav-tabs justify-content-end" id="customTab5" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tab-Map" data-bs-toggle="tab" href="#Map" role="tab"
+                                    aria-controls="Map" aria-selected="true">
+                                    <span class="badge bg-info" style="font-size: 16px;">Bản đồ Phương tiện khai thác</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="customTabContent">
+                            <div class="tab-pane fade show active" id="Map" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">Quận huyện
+                                            [{{ToChucService.BaseParameter.DanhMucQuanHuyenID}}]</label>
+                                        <select class="form-select" name="DanhMucQuanHuyenID"
+                                            [(ngModel)]="ToChucService.BaseParameter.DanhMucQuanHuyenID"
+                                            (change)="DanhMucXaPhuongSearch()">
+                                            <option value="0">
+                                                Tất cả</option>
+                                            <option *ngFor="let item of DanhMucQuanHuyenService.List;"
+                                                [value]="item.ID">
+                                                {{item.Name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">Xã phường
+                                            [{{ToChucService.BaseParameter.DanhMucXaPhuongID}}]</label>
+                                        <select class="form-select" name="DanhMucXaPhuongID"
+                                            [(ngModel)]="ToChucService.BaseParameter.DanhMucXaPhuongID">
+                                            <option value="0">
+                                                Tất cả</option>
+                                            <option *ngFor="let item of DanhMucXaPhuongService.List;" [value]="item.ID">
+                                                {{item.Name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">.</label>
+                                        <input [(ngModel)]="ToChucService.BaseParameter.SearchString"
+                                            placeholder="Tìm ..." class="form-control" (keyup.enter)="MapLoad(1)">
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">.</label>
+                                        <a style="width: 100%;" title="Đường phố" (click)="MapLoad(0)"
+                                            class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Đường phố</a>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">.</label>
+                                        <a style="width: 100%;" title="Vệ tinh" (click)="MapLoad(1)"
+                                            class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Vệ tinh</a>
+                                    </div>                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <div class="map" #map style="height: 600px; width: 100%;">
+                                            <div style="z-index: 1000; position: absolute; top: 0;">
+                                                <img src="assets/image/vungtrong.png" />
+                                            </div>
+                                            <div
+                                                style="z-index: 1000; position: absolute; bottom: 0; width: 100%; height: 20px; background-color: #ffffff;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="ToChucService.IsShowLoading"></app-loading>

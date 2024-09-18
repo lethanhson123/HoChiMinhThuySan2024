@@ -1,0 +1,59 @@
+<div class="app-body">
+    <div class="row">
+        <div class="col-lg-3 col-sm-12 col-12">
+        </div>
+        <div class="col-lg-6 col-sm-12 col-12">
+            <div class="card" style="margin-left: 1px;">
+                <div class="card-body">
+                    <div class="custom-tabs-container">                       
+                        <div class="tab-content" id="customTabContent">
+                            <div class="tab-pane fade show active" id="ThanhVien" role="tabpanel">
+                                <div class="row gx-4">
+                                    <div class="col-lg-12 col-sm-12 col-12" style="text-align: center;">
+                                        <img width="200" height="200" src="assets/image/logo.png"
+                                            title="{{PageDescription}}"
+                                            alt="{{PageDescription}}">
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12" style="text-align: center;">
+                                        <label class="form-label">{{PageTitle}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12" style="text-align: center;">
+                                        <label class="form-label">{{PageDescription}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <label class="form-label" for="TaiKhoan">Tài khoản<span
+                                                class="text-danger">*</span></label>
+                                        <input name="TaiKhoan" [(ngModel)]="ThanhVienService.FormData.TaiKhoan"
+                                            placeholder="Tài khoản" type="text" class="form-control" autofocus>
+                                    </div>                                      
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <label class="form-label" for="password">Mật khẩu <span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input name="password" id="password"
+                                                [(ngModel)]="ThanhVienService.FormData.MatKhau"
+                                                placeholder="Mật khẩu" [type]="MatKhauIsActive ? 'password' : 'text'" class="form-control"
+                                                (keyup.enter)="Login()">
+                                            <button class="btn btn-outline-secondary" type="button" (click)="MatKhauChangeType()">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <button class="btn btn-info" style="width: 100%;"
+                                            (click)="Login()"
+                                            [disabled]="!ThanhVienService.FormData.TaiKhoan || !ThanhVienService.FormData.MatKhau">Đăng
+                                            nhập</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 col-12">
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="ThanhVienService.IsShowLoading"></app-loading>

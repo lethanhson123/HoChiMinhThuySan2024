@@ -1,0 +1,70 @@
+<div class="app-body">
+    <div class="row">
+        <div class="col-xxl-12">
+            <div class="card" style="margin-left: 1px;">
+                <div class="card-body">
+                    <div class="custom-tabs-container">
+                        <ul class="nav nav-tabs justify-content-end" id="customTab5" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tab-Map" data-bs-toggle="tab" href="#Map" role="tab"
+                                    aria-controls="Map" aria-selected="true">
+                                    <span class="badge bg-info" style="font-size: 16px;">Thống kê</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="customTabContent">
+                            <div class="tab-pane fade show active" id="Map" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">Quận huyện
+                                            [{{DanhMucTinhThanhToaDoService.BaseParameter.ParentID}}]</label>
+                                        <select class="form-select" name="ParentID"
+                                            [(ngModel)]="DanhMucTinhThanhToaDoService.BaseParameter.ParentID">
+                                            <option value="0">
+                                                Tất cả</option>
+                                            <option *ngFor="let item of DanhMucQuanHuyenService.List;"
+                                                [value]="item.ID">
+                                                {{item.Name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">.</label>
+                                        <a style="width: 100%;" title="Đường phố" (click)="MapLoad(0)"
+                                            class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Đường phố</a>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-12">
+                                        <label *ngIf="!NotificationService.IsMobile" class="form-label">.</label>
+                                        <a style="width: 100%;" title="Vệ tinh" (click)="MapLoad(1)"
+                                            class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Vệ tinh</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <div class="map" #map style="height: 600px; width: 100%;">
+                                            <div style="z-index: 1000; position: absolute; top: 0;">
+                                                <img src="assets/image/vungtrong.png" />
+                                            </div>
+                                            <div
+                                                style="z-index: 1000; position: absolute; bottom: 0; width: 100%; height: 20px; background-color: #ffffff;">
+                                            </div>
+                                            <div *ngIf="IsPopup"
+                                                style="z-index: 1000; position: absolute; bottom: 20; right: 0; opacity: 0.8; width: 400px; height: 580px; background-color: #ffffff;">
+                                                <a style="cursor: pointer; float: right;" (click)="PopupClose()">
+                                                    <span class="badge bg-danger" style="font-size: 16px;"><i
+                                                            class="bi bi-x-lg"></i></span>
+                                                </a>                                               
+                                                <div id="PopupContent" style="padding: 10px;" [innerHTML]="PopupContent">                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="DanhMucTinhThanhToaDoService.IsShowLoading"></app-loading>

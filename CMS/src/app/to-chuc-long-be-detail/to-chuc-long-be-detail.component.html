@@ -1,0 +1,527 @@
+<div class="custom-tabs-container">
+    <ul class="nav nav-tabs justify-content-end" id="customTab5" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="tab-ToChucDetail" data-bs-toggle="tab" href="#ToChucDetail" role="tab"
+                aria-controls="ToChucDetail" aria-selected="true">
+                <span class="badge bg-info" style="font-size: 16px;">Chủ thể
+                    [{{ToChucService.FormData.ID}}]</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-ToChucToaDo" data-bs-toggle="tab" href="#ToChucToaDo" role="tab"
+                aria-controls="ToChucToaDo" aria-selected="true">
+                <span class="badge bg-danger" style="font-size: 16px;">Tọa độ</span>
+            </a>
+        </li>   
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-ToChucMap" data-bs-toggle="tab" href="#ToChucMap" role="tab"
+                aria-controls="ToChucMap" aria-selected="true">
+                <span class="badge bg-success" style="font-size: 16px;">Bản đồ</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-ToChucGiong" data-bs-toggle="tab" href="#ToChucGiong" role="tab"
+                aria-controls="ToChucGiong" aria-selected="true">
+                <span class="badge bg-danger" style="font-size: 16px;">Loại nuôi</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-ToChucToaDo" data-bs-toggle="tab" href="#ToChucTapTinDinhKem" role="tab"
+                aria-controls="ToChucTapTinDinhKem" aria-selected="true">
+                <span class="badge bg-primary" style="font-size: 16px;">Tài liệu</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a style="cursor: pointer;" class="nav-link" id="tab-Close" data-bs-toggle="tab" (click)="Close()"
+                role="tab" aria-controls="Close" aria-selected="false">
+                <span class="badge bg-danger" style="font-size: 16px;"><i class="bi bi-x-lg"></i></span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="customTabContent">
+        <div class="tab-pane fade show active" id="ToChucDetail" role="tabpanel">
+            <div class="row gx-4">
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Lưu thay đổi" (click)="ToChucSave()" class="btn btn-info"><i
+                            class="bi bi-sd-card"></i> Lưu thay đổi</a>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <div class="form-check form-check-inline mb-6">
+                        <input type="checkbox" class="form-check-input" name="Active"
+                            [(ngModel)]="ToChucService.FormData.Active" />
+                        <label class="form-check-label" for="Active">Kích hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-4">
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Tiêu đề</label>
+                        <input name="Name" [(ngModel)]="ToChucService.FormData.Name" placeholder="Tiêu đề" type="text"
+                            class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Mã số</label>
+                        <input name="Code" [(ngModel)]="ToChucService.FormData.Code" placeholder="Mã số"
+                            type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Điện thoại</label>
+                        <input name="DienThoai" [(ngModel)]="ToChucService.FormData.DienThoai" placeholder="Điện thoại"
+                            type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Email</label>
+                        <input name="Email" [(ngModel)]="ToChucService.FormData.Email" placeholder="Email" type="text"
+                            class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Khu vực nuôi</label>
+                        <input name="DiaChiKhu" [(ngModel)]="ToChucService.FormData.DiaChiKhu" placeholder="Khu vực nuôi"
+                            type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Diện tích (ha)</label>
+                        <input name="DienTichNuoiTrongThuySan" [(ngModel)]="ToChucService.FormData.DienTichNuoiTrongThuySan" placeholder="Diện tích (ha)" type="number"
+                            class="form-control">
+                    </div>       
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Số lồng</label>
+                        <input name="SoLuongGiongTha" [(ngModel)]="ToChucService.FormData.SoLuongGiongTha" placeholder="Số lồng" type="number"
+                            class="form-control">
+                    </div>               
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Ghi chú</label>
+                        <input name="Note" [(ngModel)]="ToChucService.FormData.Note" placeholder="Ghi chú"
+                            type="text" class="form-control">
+                    </div>    
+                </div>
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Danh mục [{{ToChucService.FormData.ParentID}}]</label>
+                        <select class="form-select" name="ParentID" [(ngModel)]="ToChucService.FormData.ParentID">
+                            <option *ngFor="let item of DanhMucToChucService.List;" [value]="item.ID">
+                                {{item.Name}} [{{item.ID}}]</option>
+                        </select>
+                    </div>                  
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Quận huyện [{{ToChucService.FormData.DanhMucQuanHuyenID}}]</label>
+                        <select class="form-select" name="DanhMucQuanHuyenID"
+                            [(ngModel)]="ToChucService.FormData.DanhMucQuanHuyenID" (change)="DanhMucXaPhuongSearch()">
+                            <option *ngFor="let item of DanhMucQuanHuyenService.List;" [value]="item.ID">
+                                {{item.Name}} [{{item.ID}}]</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Xã phường [{{ToChucService.FormData.DanhMucXaPhuongID}}]</label>
+                        <select class="form-select" name="DanhMucXaPhuongID"
+                            [(ngModel)]="ToChucService.FormData.DanhMucXaPhuongID">
+                            <option *ngFor="let item of DanhMucXaPhuongService.List;" [value]="item.ID">
+                                {{item.Note}} {{item.Name}} [{{item.ID}}]</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Số nhà</label>
+                        <input name="SoNha" [(ngModel)]="ToChucService.FormData.SoNha" placeholder="Số nhà"
+                            type="text" class="form-control">
+                    </div>   
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Đường phố</label>
+                        <input name="DuongPho" [(ngModel)]="ToChucService.FormData.DuongPho" placeholder="Đường phố"
+                            type="text" class="form-control">
+                    </div>   
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Địa chỉ</label>
+                        <input name="DiaChi" [(ngModel)]="ToChucService.FormData.DiaChi" placeholder="Địa chỉ"
+                            type="text" class="form-control">
+                    </div>   
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Kinh độ</label>
+                        <input name="KinhDo" [(ngModel)]="ToChucService.FormData.KinhDo" placeholder="Kinh độ"
+                            type="text" class="form-control">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <label class="form-label">Vĩ độ</label>
+                        <input name="ViDo" [(ngModel)]="ToChucService.FormData.ViDo" placeholder="Vĩ độ" type="text"
+                            class="form-control">
+                    </div>                                                
+                </div>
+            </div>
+        </div>
+        <div *ngIf="ToChucService.FormData.ID>0" class="tab-pane fade" id="ToChucTapTinDinhKem" role="tabpanel">
+            <div class="row gx-4">
+                <div class="col-lg-11 col-sm-12 col-12">
+                    <input [(ngModel)]="ToChucTapTinDinhKemService.BaseParameter.SearchString" placeholder="Tìm ..."
+                        class="form-control" (keyup.enter)="ToChucTapTinDinhKemSearch()">
+                </div>
+                <div class="col-lg-1 col-sm-6 col-12">
+                    <a style="width: 100%;" class="btn btn-success" title="Tìm" (click)="ToChucTapTinDinhKemSearch()"><i
+                            class="bi bi-search"></i></a>
+                </div>
+            </div>
+            <div class="card mb-4 card-primary">
+                <div class="card-header">
+                    <h5 class="card-title text-white bg-primary">Danh sách
+                        <span *ngIf="ToChucTapTinDinhKemService.List">({{ToChucTapTinDinhKemService.List.length}}
+                            items)</span>
+                    </h5>
+                </div>
+                <div class="card-body bg-primary">
+                    <div class="table-outer">
+                        <div class="table-responsive">
+                            <table mat-table matSort #ToChucTapTinDinhKemSort="matSort"
+                                [dataSource]="ToChucTapTinDinhKemService.DataSource" class="table table-striped m-0">
+                                <ng-container matColumnDef="STT">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        STT
+                                    </th>
+                                    <td mat-cell *matCellDef="let element; index as i;" style="text-align: center;">
+                                        {{ToChucTapTinDinhKemPaginator.pageSize *
+                                        ToChucTapTinDinhKemPaginator.pageIndex + i + 1}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.ID}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="LastUpdatedDate">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        Ngày Ghi nhận
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <b>{{element.LastUpdatedDate | date:'dd/MM/yyyy HH:mm:ss'}}</b>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tiêu đề
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Tiêu đề"
+                                            name="Name{{element.ID}}" [(ngModel)]="element.Name" />
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="FileName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Chọn file
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input type="file"
+                                            (change)="ToChucTapTinDinhKemChangeFileName($event.target.files)">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Save">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <a class="btn btn-info" (click)="ToChucTapTinDinhKemSave(element)"><i
+                                                class="bi bi-sd-card"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" (click)="ToChucTapTinDinhKemDelete(element)"
+                                            *ngIf="element.ID > 0"><i class="bi bi-trash"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a *ngIf="element.ID > 0 && element.FileName" class="btn btn-success"
+                                            title="Tải về" href="{{element.FileName}}" target="_blank"><i
+                                                class="bi bi-cloud-download"></i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="ToChucTapTinDinhKemService.DisplayColumns001">
+                                </tr>
+                                <tr mat-row
+                                    *matRowDef="let row; columns: ToChucTapTinDinhKemService.DisplayColumns001;">
+                                </tr>
+                            </table>
+                            <mat-paginator #ToChucTapTinDinhKemPaginator="matPaginator"
+                                [pageSizeOptions]="[10,20,50,100]" [pageSize]="6"
+                                [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="ToChucService.FormData.ID>0" class="tab-pane fade" id="ToChucToaDo" role="tabpanel">
+            <div class="row gx-4">
+                <div class="col-lg-8 col-sm-12 col-12">
+                    <input [(ngModel)]="ToChucToaDoService.BaseParameter.SearchString" placeholder="Tìm ..."
+                        class="form-control" (keyup.enter)="ToChucToaDoSearch()">
+                </div>
+                <div class="col-lg-1 col-sm-6 col-12">
+                    <a style="width: 100%;" class="btn btn-success" title="Tìm" (click)="ToChucToaDoSearch()"><i
+                            class="bi bi-search"></i></a>
+                </div>
+                <div class="col-lg-3 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Vẽ vùng trồng" (click)="OpenWindowVeBanDo()"
+                        class="btn btn-success"><i class="bi bi-brush"></i> Vẽ bản đồ</a>
+                </div>
+            </div>
+            <div class="card mb-4 card-danger">
+                <div class="card-header">
+                    <h5 class="card-title text-white">Danh sách
+                        <span *ngIf="ToChucToaDoService.List">({{ToChucToaDoService.List.length}}
+                            items)</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-outer">
+                        <div class="table-responsive">
+                            <table mat-table matSort #ToChucToaDoSort="matSort"
+                                [dataSource]="ToChucToaDoService.DataSource" class="table table-striped m-0">
+                                <ng-container matColumnDef="STT">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        STT
+                                    </th>
+                                    <td mat-cell *matCellDef="let element; index as i;" style="text-align: center;">
+                                        {{ToChucToaDoPaginator.pageSize *
+                                        ToChucToaDoPaginator.pageIndex + i + 1}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.ID}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ToChucVungNuoiID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Vùng nuôi
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" style="text-align: right;"
+                                            placeholder="0" name="ToChucVungNuoiID{{element.ID}}"
+                                            [(ngModel)]="element.ToChucVungNuoiID">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tiêu đề
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Tiêu đề"
+                                            name="Name{{element.ID}}" [(ngModel)]="element.Name" />
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="KinhDo">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Kinh độ
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Kinh độ"
+                                            name="KinhDo{{element.ID}}" [(ngModel)]="element.KinhDo" />
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ViDo">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Vĩ độ
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Vĩ độ"
+                                            name="ViDo{{element.ID}}" [(ngModel)]="element.ViDo" />
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="SortOrder">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sắp xếp
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" style="text-align: right;"
+                                            placeholder="0" name="SortOrder{{element.ID}}"
+                                            [(ngModel)]="element.SortOrder">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Active">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Trụ sở | Trung tâm
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="Active{{element.ID}}"
+                                                [(ngModel)]="element.Active">
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Save">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <a class="btn btn-info" (click)="ToChucToaDoSave(element)"><i
+                                                class="bi bi-sd-card"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" (click)="ToChucToaDoDelete(element)"
+                                            *ngIf="element.ID>0"><i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="ToChucToaDoService.DisplayColumns002">
+                                </tr>
+                                <tr mat-row *matRowDef="let row; columns: ToChucToaDoService.DisplayColumns002;">
+                                </tr>
+                            </table>
+                            <mat-paginator #ToChucToaDoPaginator="matPaginator" [pageSizeOptions]="[10,20,50,100]"
+                                [pageSize]="6" [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="ToChucService.FormData.ID>0" class="tab-pane fade" id="ToChucMap" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Đường phố" (click)="MapLoad(0)" class="btn btn-success"><i
+                            class="bi bi-arrow-repeat"></i> Đường phố</a>
+                </div>
+                <div class="col-lg-3 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Vệ tinh" (click)="MapLoad(1)" class="btn btn-success"><i
+                            class="bi bi-arrow-repeat"></i> Vệ tinh</a>
+                </div>
+                <div class="col-lg-3 col-sm-12 col-12">
+                    <a style="width: 100%;" title="Vẽ vùng trồng" (click)="OpenWindowVeBanDo()"
+                        class="btn btn-success"><i class="bi bi-brush"></i> Vẽ bản đồ</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-12">
+                    <div class="map" #map style="height: 600px; width: 100%;">
+                        <div style="z-index: 1000; position: absolute; top: 0;">
+                            <img src="assets/image/vungtrong.png" />
+                        </div>
+                        <div
+                            style="z-index: 1000; position: absolute; bottom: 0; width: 100%; height: 20px; background-color: #ffffff;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        <div *ngIf="ToChucService.FormData.ID>0" class="tab-pane fade" id="ToChucGiong" role="tabpanel">
+            <div class="row gx-4">
+                <div class="col-lg-11 col-sm-12 col-12">
+                    <input [(ngModel)]="ToChucGiongService.BaseParameter.SearchString" placeholder="Tìm ..."
+                        class="form-control" (keyup.enter)="ToChucGiongSearch()">
+                </div>
+                <div class="col-lg-1 col-sm-6 col-12">
+                    <a style="width: 100%;" class="btn btn-success" title="Tìm" (click)="ToChucGiongSearch()"><i
+                            class="bi bi-search"></i></a>
+                </div>
+            </div>
+            <div class="card mb-4 card-danger">
+                <div class="card-header">
+                    <h5 class="card-title text-white">Danh sách
+                        <span *ngIf="ToChucGiongService.List">({{ToChucGiongService.List.length}}
+                            items)</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-outer">
+                        <div class="table-responsive">
+                            <table mat-table matSort #ToChucGiongSort="matSort"
+                                [dataSource]="ToChucGiongService.DataSource" class="table table-striped m-0">
+                                <ng-container matColumnDef="STT">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        STT
+                                    </th>
+                                    <td mat-cell *matCellDef="let element; index as i;" style="text-align: center;">
+                                        {{ToChucGiongPaginator.pageSize *
+                                        ToChucGiongPaginator.pageIndex + i + 1}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.ID}}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="DanhMucLoaiGiongID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Loại thủy sản
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <select class="form-select" name="element.DanhMucLoaiGiongID"
+                                            [(ngModel)]="element.DanhMucLoaiGiongID">
+                                            <option *ngFor="let item of DanhMucLoaiGiongService.List;"
+                                                [value]="item.ID">
+                                                {{item.Name}} [{{item.ID}}]</option>
+                                        </select>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="DanhMucLoaiGiongName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Loại thủy sản (Thêm nếu thiếu)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Loại thủy sản (Thêm nếu thiếu)"
+                                            name="DanhMucLoaiGiongName{{element.ID}}" [(ngModel)]="element.DanhMucLoaiGiongName">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="DanhMucGiongID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Loại nuôi
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <select class="form-select" name="element.DanhMucGiongID"
+                                            [(ngModel)]="element.DanhMucGiongID">
+                                            <option *ngFor="let item of DanhMucGiongService.List;" [value]="item.ID">
+                                                {{item.Name}} [{{item.ID}}]</option>
+                                        </select>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="DanhMucGiongName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Loại nuôi (Thêm nếu thiếu)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="text" placeholder="Loại nuôi (Thêm nếu thiếu)"
+                                            name="DanhMucGiongName{{element.ID}}" [(ngModel)]="element.DanhMucGiongName">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="MatDoNuoi">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Mật độ nuôi (con/m2)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" placeholder="Mật độ nuôi (con/m2)"
+                                            name="MatDoNuoi{{element.ID}}" [(ngModel)]="element.MatDoNuoi">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="TyLeSong">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tỷ lệ sống (%)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" placeholder="Tỷ lệ sống (%)"
+                                            name="TyLeSong{{element.ID}}" [(ngModel)]="element.TyLeSong">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="ThoiGianNuoi">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Thời gian nuôi (ngày)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" placeholder="Thời gian nuôi (ngày)"
+                                            name="ThoiGianNuoi{{element.ID}}" [(ngModel)]="element.ThoiGianNuoi">
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="SanLuong">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sản lượng (tấn)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <input class="form-control" type="number" placeholder="Sản lượng (tấn)"
+                                            name="SanLuong{{element.ID}}" [(ngModel)]="element.SanLuong">
+                                    </td>
+                                </ng-container>                                
+                                <ng-container matColumnDef="Save">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <a class="btn btn-info" (click)="ToChucGiongSave(element)"><i
+                                                class="bi bi-sd-card"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" (click)="ToChucGiongDelete(element)"
+                                            *ngIf="element.ID>0"><i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="ToChucGiongService.DisplayColumns004">
+                                </tr>
+                                <tr mat-row *matRowDef="let row; columns: ToChucGiongService.DisplayColumns004;">
+                                </tr>
+                            </table>
+                            <mat-paginator #ToChucGiongPaginator="matPaginator" [pageSizeOptions]="[10,20,50,100]"
+                                [pageSize]="6" [showFirstLastButtons]></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+<app-loading *ngIf="ToChucService.IsShowLoading"></app-loading>
